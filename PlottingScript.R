@@ -15,7 +15,8 @@ library(tidyverse) # data handling and plotting
 
 # ---- DATA ----
 
-mossdata <- read_csv("mossdata.csv")
+mossdata <- read_csv("mossdataset.csv") %>%
+  mutate(species = str_replace(species, "Tortula truncata", "Pottia truncata")) # match species names in GBIF data with tree species names
 mosstreeBI <- read.nexus("MrBayesTree.tre")
 mosstreeML <- read.nexus("MLTree2.nexus")
 
@@ -163,6 +164,8 @@ ggmosstreerange <- facet_plot(ggmosstree, panel = "Geographic range", data = ord
                               mapping = aes(x = order$range), # set aes (was having weird issue hence the $)
                               stat="identity") # stat identity so not a histogram 
 #  + xlim_tree(20) # use if want to see species names in full
+
+ggmosstreerange
 
 #ggsave(filename = "TreeRange.png",
 #       plot = ggmosstreerange,
