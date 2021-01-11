@@ -9,9 +9,11 @@ Use GBIFsearchquery.R to create a download request on your GBIF account (needs y
 
 Save the downloaded CSV as gbif.csv.
 
-Download the required datasets (as indicated in RangeFinder.R) then run RangeFinder.R to generate the rangeDataset.csv (included in repo).
+Download the required datasets (as indicated in RangeFinder.R) then run RangeFinder.R to generate the mossdataset.csv (included in repo).
 
 To generate range maps for each species, use MapGen.R along with gbif.csv
+
+Plotting is done in the PlottingScript.R using the two tree files
 
 (more to come)
 
