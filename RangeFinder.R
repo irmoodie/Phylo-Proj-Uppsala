@@ -114,5 +114,11 @@ rangeDataset <- rangeDataset %>%
 
 rm(area, worlddata, prov, shp, range, i) # remove temp variables
 
-write_csv(rangeDataset,
-          file = "rangeDataset.csv")
+spores <- read_csv("species.csv") %>% # load in dataset with spore sizes and presence/absence datamarked
+  mutate(species = str_replace(species, "_", " ")) # ensure species names are in the same format
+
+mossdata <- left_join(rangeDataset, spores) # join spore data to range data
+
+rm(spores, rangeDataset) # remove variables no longer needed
+
+write_csv(mossdata, file = "mossdataset.csv")
